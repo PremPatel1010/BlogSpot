@@ -1,0 +1,107 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prem Blogspot</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+  </head>
+  <body>
+    
+    <header class="bg-white shadow">
+      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
+      </div>
+    </header>
+    <div class="container ">
+      <div class="dashboard">
+        <div class="title">
+          <h2>All Blogs:</h2>
+          <form method="get" action="/blogs/new">
+            <button type="submit">Create Blog +</button>
+          </form>
+        </div>
+        <div class="blogs ">
+          <ul>
+            
+            <li><a href="/blogs/">></a></li>
+          
+            <li>
+              <a href="/blogs//edit"
+                ><i class="fa-solid fa-user-pen"></i
+              ></a>
+            </li>
+            <li>
+              <form action="/blogs//delete" method="POST">
+                <button type="submit"><i class="fa-solid fa-trash"></i></button>
+              </form>
+            </li>
+
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prem Blogspot</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+  </head>
+  <%- include('partials/header.ejs') %>
+  <body>  
+    
+    <div class="container">
+      <div class="dashboard">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
+        </div>
+        <div class="title">
+          <h2>All Blogs:</h2>
+          <form method="get" action="/blogs/new">
+            <button type="submit">Create Blog +</button>
+          </form>
+        </div>
+        <div class="blogs">
+          <ul>
+            <% blogs.forEach(blog => { %>
+            <li class="blog-entry">
+              <a href="/blogs/<%= blog.id %>" class="blogTitle"><%= blog.title %></a>
+              <div class="blog-actions">
+                <a href="/blogs/<%= blog.id %>/edit" class="edit-button">
+                  <i class="fa-solid fa-user-pen"></i>
+                </a>
+                <form action="/blogs/<%= blog.id %>/delete" method="POST">
+                  <button type="submit" class="delete-button">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </form>
+              </div>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
